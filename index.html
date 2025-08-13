@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backspace - 게임 회사</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section id="hero">
+            <h1 class="glitch-text" data-text="Backspace">Backspace<span class="cursor"></span></h1>
+
+        
+        </section>
+
+<section id="games">
+            <h2>Our Games</h2>
+            <div class="game-grid">
+                <div class="game-card">
+                    <div class="game-image"></div>
+                    <h3>Ctrl</h3>
+                </div>
+                <div class="game-card">
+                    <div class="game-image"></div>
+                    <h3>Alt</h3>
+                </div>
+                <div class="game-card">
+                    <div class="game-image"></div>
+                    <h3>Delete</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Backspace. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      fetch('header.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('header-placeholder').innerHTML = data;
+        });
+    </script>
+</body>
+</html> 
