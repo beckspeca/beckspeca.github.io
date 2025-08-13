@@ -1,2 +1,1 @@
-# beckspeca.github.ioㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ
-asdasdasd
+# beckspeca.github.io
