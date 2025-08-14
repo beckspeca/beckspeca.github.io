@@ -86,3 +86,13 @@ if (feedbackForm) {
         }
     });
 }
+
+// 'Ctrl' 텍스트를 클릭하면 game_details.html로 이동
+const ctrlCard = document.getElementById('ctrl-card');
+if (ctrlCard) {
+    const ctrlLink = ctrlCard.querySelector('h3');
+    ctrlLink.addEventListener('click', (e) => {
+        e.stopPropagation(); // 부모 요소로의 이벤트 전파를 막습니다.
+        window.location.href = 'game1_details.html';
+    });
+}
