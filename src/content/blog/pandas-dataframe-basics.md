@@ -1,11 +1,12 @@
 ---
-title: 'Pandas 데이터 분석의 시작: DataFrame 기본 문법'
-description: 'DataFrame을 만들고 불러온 뒤 head, shape, info, describe로 데이터 구조를 확인하는 방법을 정리합니다.'
+title: '#데이터분석 Ⅱ Pandas | 데이터 분석의 시작 문법'
+description: 'Pandas DataFrame을 만들고 불러온 뒤 head, shape, columns, info, describe로 데이터 구조를 확인하는 기본 문법을 정리합니다.'
 pubDate: '2026-07-09'
-tags: ['Python', 'Pandas', 'DataFrame']
+updatedDate: '2026-08-13'
+tags: ['AI', 'ML', 'DA', 'DS', 'NumPy', 'Pandas']
 ---
 
-지난 글에서는 Pandas가 무엇이고 데이터 분석에서 왜 자주 사용하는지 알아봤다. 이번 글에서는 Pandas로 분석을 시작할 때 가장 먼저 사용하는 **DataFrame 생성과 데이터 확인 문법**을 정리한다.
+지난 글에서는 Pandas가 무엇인지, 그리고 왜 데이터 분석에서 자주 사용되는지 정리했다. 이번 글에서는 Pandas를 실제로 사용하기 위한 첫 번째 문법인 **DataFrame 생성과 데이터 확인 문법**을 정리한다.
 
 데이터 분석은 대체로 다음 순서로 시작한다.
 
