@@ -1,4 +1,4 @@
-# JAEWON.LOG
+# BACKSPACE.DATA
 
 Astro와 Markdown으로 만든 개인 개발 블로그입니다. GitHub Pages 자동 배포가 설정되어 있습니다.
 
