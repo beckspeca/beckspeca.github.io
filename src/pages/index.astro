@@ -1,49 +1,22 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro'; import Footer from '../components/Footer.astro'; import FormattedDate from '../components/FormattedDate.astro'; import Header from '../components/Header.astro'; import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+const base=import.meta.env.BASE_URL.replace(/\/$/,'');
+const posts=(await getCollection('blog',({data})=>!data.draft)).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf()).slice(0,3);
 ---
+<!doctype html><html lang="ko"><head><BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/></head><body><Header/><main>
+<section class="hero"><div><p class="eyebrow">Developer · Builder · Learner</p><h1>코드 너머의<br/><span>생각을 기록합니다.</span></h1><p class="intro">개발하며 마주친 문제와 해결 과정, 새롭게 배운 기술을<br/>다음의 나와 누군가에게 도움이 되도록 남깁니다.</p><div class="actions"><a class="primary" href={`${base}/blog`}>글 읽기　→</a><a class="secondary" href={`${base}/about`}>저에 대해</a></div></div>
+<div class="terminal" aria-hidden="true"><div class="terminal-bar"><i></i><i></i><i></i><span>today.ts</span></div><pre><span class="purple">const</span> developer = &#123;
+  name: <span class="green">'신재원'</span>,
+  interests: [
+    <span class="green">'web'</span>, <span class="green">'product'</span>, <span class="green">'automation'</span>
+  ],
+  status: <span class="green">'keep learning'</span>
+&#125;;
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<span class="muted">// 오늘의 배움을 기록합니다.</span><b class="cursor"></b></pre></div></section>
+<section class="latest"><div class="section-head"><div><p class="eyebrow">Latest notes</p><h2>최근 글</h2></div><a href={`${base}/blog`}>모든 글 보기 →</a></div><div class="post-grid">{posts.map((post,i)=><a class="post-card" href={`${base}/blog/${post.id}/`}><span class="number">0{i+1}</span><div class="tags">{post.data.tags.map(tag=><span>#{tag}</span>)}</div><h3>{post.data.title}</h3><p>{post.data.description}</p><time><FormattedDate date={post.data.pubDate}/></time></a>)}</div></section>
+</main><Footer/></body></html>
+<style>
+.hero{min-height:68vh;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:72px;padding:40px 0 100px}.hero h1 span{color:var(--muted)}.intro{color:var(--muted);font-size:1.08rem}.actions{display:flex;gap:14px;margin-top:34px}.actions a{padding:12px 20px;border-radius:7px;text-decoration:none;font-weight:700}.primary{background:var(--accent);color:#07110c}.secondary{border:1px solid var(--line);color:var(--text)}.terminal{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#090c0f;box-shadow:0 32px 90px rgba(0,0,0,.35);transform:rotate(1.5deg)}.terminal-bar{height:42px;display:flex;align-items:center;gap:7px;padding:0 14px;background:var(--surface-2);color:var(--muted);font-size:.75rem}.terminal-bar i{width:9px;height:9px;border-radius:50%;background:#ff6b6b}.terminal-bar i:nth-child(2){background:#ffd166}.terminal-bar i:nth-child(3){background:var(--accent)}.terminal-bar span{margin-left:auto;margin-right:auto}.terminal pre{border:0;border-radius:0;margin:0;min-height:286px;padding:34px;font-size:.9rem;line-height:1.9}.purple{color:#c792ea}.green{color:var(--accent)}.muted{color:#66717c}.cursor{display:inline-block;width:8px;height:18px;background:var(--accent);vertical-align:middle;animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}.latest{padding-top:70px;border-top:1px solid var(--line)}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:32px}.section-head h2{margin:0}.section-head a{font-size:.9rem;text-decoration:none}.post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.post-card{min-height:290px;padding:25px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text);text-decoration:none;transition:.2s}.post-card:hover{transform:translateY(-5px);border-color:#425048}.number{float:right;color:#47515b}.tags{color:var(--accent);font-size:.76rem;margin:46px 0 15px}.tags span{margin-right:8px}.post-card h3{font-size:1.25rem}.post-card p,.post-card time{color:var(--muted);font-size:.88rem}.post-card time{display:block;margin-top:24px}@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:30px;gap:38px}.terminal{transform:none}.post-grid{grid-template-columns:1fr}.post-card{min-height:220px}}@media(max-width:520px){.hero br{display:none}.terminal pre{padding:22px;font-size:.75rem}}
+</style>
