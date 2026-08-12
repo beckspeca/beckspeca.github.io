@@ -6,8 +6,8 @@ const path = (value = '') => `${base}/${value}`;
 ---
 <header>
 	<nav aria-label="주요 메뉴">
-		<a class="brand" href={path()}><span>&gt;_</span>{SITE_TITLE}</a>
-		<div class="internal-links"><HeaderLink href={path()}>홈</HeaderLink><HeaderLink href={path('blog')}>글</HeaderLink><HeaderLink href={path('about')}>소개</HeaderLink></div>
+		<a class="brand" href={path()}><span>●</span>{SITE_TITLE}</a>
+		<div class="internal-links"><HeaderLink href={path()}>홈</HeaderLink><HeaderLink href={path('projects')}>프로젝트</HeaderLink><HeaderLink href={path('blog')}>인사이트</HeaderLink><HeaderLink href={path('about')}>소개</HeaderLink></div>
 		<a class="github" href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub ↗</a>
 	</nav>
 </header>
