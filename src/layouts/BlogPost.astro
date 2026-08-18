@@ -40,6 +40,11 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			}
 			.title h1 {
 				margin: 0 0 0.5em 0;
+				font-size: clamp(2.25rem, 5vw, 4rem);
+				line-height: 1.08;
+				letter-spacing: -0.04em;
+				word-break: keep-all;
+				overflow-wrap: anywhere;
 			}
 			.date {
 				margin-bottom: 0.5em;
