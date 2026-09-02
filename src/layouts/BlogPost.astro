@@ -32,6 +32,22 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				padding: 1em;
 				color: #222;
 			}
+			.prose :global(h2) {
+				margin: 2.5em 0 0.75em;
+				font-size: clamp(1.85rem, 3vw, 2.35rem);
+				line-height: 1.18;
+				letter-spacing: -0.035em;
+			}
+			.prose :global(h3) {
+				margin: 2.1em 0 0.65em;
+				font-size: clamp(1.3rem, 2vw, 1.55rem);
+				line-height: 1.28;
+				letter-spacing: -0.025em;
+			}
+			.prose :global(p),
+			.prose :global(li) {
+				line-height: 1.7;
+			}
 			.title {
 				margin-bottom: 1em;
 				padding: 1em 0;
@@ -40,15 +56,26 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 			}
 			.title h1 {
 				margin: 0 0 0.5em 0;
-				font-size: 3.25rem;
+				font-size: clamp(2.35rem, 5vw, 3.25rem);
 				line-height: 1.08;
 				letter-spacing: -0.04em;
 				word-break: keep-all;
 				overflow-wrap: anywhere;
 			}
 			@media (max-width: 720px) {
+				.prose {
+					max-width: 100%;
+					padding: 0;
+				}
 				.title h1 {
 					font-size: 2rem;
+				}
+				.prose :global(h2) {
+					margin-top: 2.25em;
+					font-size: 1.65rem;
+				}
+				.prose :global(h3) {
+					font-size: 1.2rem;
 				}
 			}
 			.date {
