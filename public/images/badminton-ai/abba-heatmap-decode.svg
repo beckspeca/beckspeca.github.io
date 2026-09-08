@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" role="img" aria-labelledby="abbaTitle abbaDesc" font-family="Arial, Helvetica, sans-serif">
+  <title id="abbaTitle">히트맵 디코드 시간, ABBA 8회 측정</title>
+  <desc id="abbaDesc">변경 전(A) 9.92초, 11.93초, 13.18초, 13.20초. 변경 후(B) 2.83초, 2.84초, 2.89초, 2.82초. A는 발열이 오르며 느려지고 B는 거의 변하지 않습니다.</desc>
+
+  <rect id="__bg__" x="-8" y="-8" width="776" height="316" fill="#f4f4f2"></rect>
+
+  <g font-size="12" fill="#111">
+    <rect x="0" y="8" width="13" height="13" fill="#cfcfcb" stroke="#111" stroke-width="1"></rect>
+    <text x="20" y="19">A · 변경 전</text>
+    <rect x="104" y="8" width="13" height="13" fill="#111"></rect>
+    <text x="124" y="19">B · 변경 후</text>
+  </g>
+  <text x="704" y="19" font-size="11" fill="#606060" text-anchor="end">단위: 초 · 60초 구간 · iPhone 16 Release</text>
+
+  <g stroke="#aaa" stroke-width="1">
+    <line x1="56" y1="103.6" x2="740" y2="103.6" stroke-dasharray="2 3"></line>
+    <line x1="56" y1="176.8" x2="740" y2="176.8" stroke-dasharray="2 3"></line>
+  </g>
+  <line x1="56" y1="250" x2="740" y2="250" stroke="#111" stroke-width="1.5"></line>
+
+  <g font-size="11" fill="#606060" text-anchor="end">
+    <text x="48" y="107">10</text>
+    <text x="48" y="180">5</text>
+    <text x="48" y="254">0</text>
+  </g>
+
+  <g>
+    <rect x="76" y="104.8" width="46" height="145.2" fill="#cfcfcb" stroke="#111" stroke-width="1"></rect>
+    <text x="99" y="97" font-size="12.5" fill="#111" text-anchor="middle">9.92</text>
+    <rect x="161" y="208.6" width="46" height="41.4" fill="#111"></rect>
+    <text x="184" y="201" font-size="12.5" fill="#111" text-anchor="middle">2.83</text>
+    <rect x="247" y="208.4" width="46" height="41.6" fill="#111"></rect>
+    <text x="270" y="201" font-size="12.5" fill="#111" text-anchor="middle">2.84</text>
+    <rect x="332" y="75.4" width="46" height="174.6" fill="#cfcfcb" stroke="#111" stroke-width="1"></rect>
+    <text x="355" y="68" font-size="12.5" fill="#111" text-anchor="middle">11.93</text>
+    <rect x="418" y="57.0" width="46" height="193.0" fill="#cfcfcb" stroke="#111" stroke-width="1"></rect>
+    <text x="441" y="49.5" font-size="12.5" fill="#111" text-anchor="middle">13.18</text>
+    <rect x="503" y="207.7" width="46" height="42.3" fill="#111"></rect>
+    <text x="526" y="200" font-size="12.5" fill="#111" text-anchor="middle">2.89</text>
+    <rect x="589" y="208.7" width="46" height="41.3" fill="#111"></rect>
+    <text x="612" y="201" font-size="12.5" fill="#111" text-anchor="middle">2.82</text>
+    <rect x="674" y="56.8" width="46" height="193.2" fill="#cfcfcb" stroke="#111" stroke-width="1"></rect>
+    <text x="697" y="49.5" font-size="12.5" fill="#111" text-anchor="middle">13.20</text>
+  </g>
+
+  <g font-size="13" fill="#111" text-anchor="middle">
+    <text x="99" y="270">A</text>
+    <text x="184" y="270">B</text>
+    <text x="270" y="270">B</text>
+    <text x="355" y="270">A</text>
+    <text x="441" y="270">A</text>
+    <text x="526" y="270">B</text>
+    <text x="612" y="270">B</text>
+    <text x="697" y="270">A</text>
+  </g>
+
+  <g font-size="10.5" fill="#606060" text-anchor="middle">
+    <text x="99" y="288">발열 0</text>
+    <text x="184" y="288">1</text>
+    <text x="270" y="288">2</text>
+    <text x="355" y="288">2</text>
+    <text x="441" y="288">2</text>
+    <text x="526" y="288">2</text>
+    <text x="612" y="288">2</text>
+    <text x="697" y="288">2</text>
+  </g>
+</svg>
