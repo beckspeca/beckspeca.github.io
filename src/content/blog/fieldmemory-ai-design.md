@@ -1,5 +1,5 @@
 ---
-title: 'FieldMemory AI 설계: RAG 검색과 답변을 어떻게 검증할까'
+title: '사내 문서 기반 정보 검색 서비스'
 description: 'FieldMemory AI의 RAG 설계 기록. 문서 조건 필터, 청크와 임베딩, 주장별 인용 검증, Jev 재정렬 비교 실험과 답변 보류를 포함한 평가 지표를 정리했습니다.'
 pubDate: '2026-09-28'
 tags: ['AI', 'RAG', 'LLM', 'Information Retrieval', 'Evaluation']
