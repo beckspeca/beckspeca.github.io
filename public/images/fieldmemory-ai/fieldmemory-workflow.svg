@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="2100" viewBox="0 0 960 2100" role="img" aria-labelledby="workflow-title workflow-description">
+  <title id="workflow-title">FieldMemory AI 전체 워크플로우</title>
+  <desc id="workflow-description">문서를 검사하고 원본과 버전을 보관한 뒤 검토자가 승인합니다. 원문 위치를 보존한 로컬 E5 색인에 질문과 기준일, 설비 조건을 적용해 최대 20개 후보를 검색하고 최대 5개 근거를 선택합니다. 질문 요건 추출, 근거 충분성 확인, Jev 재정렬과 주장 검증은 기본 꺼짐인 선택 기능입니다. 확인하고 저장한 LLM 연결로 답변을 생성한 뒤 인용과 자료 변경 여부를 검사합니다. 근거 부족이나 연결 및 검증 실패 시 생성을 보류하거나 원문 근거를 보여 줍니다. 문서 변경은 기존 색인과 답변에 반영하며 모델을 자동 호출하지 않습니다. 합성 평가와 정답은 사용자 검색 흐름에서 분리합니다.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 9 4.5 0 9Z" fill="#536272"/>
+    </marker>
+    <marker id="hold-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0 9 4.5 0 9Z" fill="#996633"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif; fill: #243343; }
+      .heading { font-size: 27px; font-weight: 700; }
+      .title { font-size: 24px; font-weight: 650; }
+      .note { font-size: 20px; fill: #546474; }
+      .small { font-size: 19px; fill: #546474; }
+      .panel { fill: #eef2f5; stroke: #d6dee6; stroke-width: 1.5; }
+      .card { fill: #ffffff; stroke: #bac8d5; stroke-width: 1.5; }
+      .optional { fill: #f2f6fc; stroke: #55769d; stroke-width: 2; stroke-dasharray: 7 5; }
+      .hold { fill: #fff9f0; stroke: #d3b58c; stroke-width: 1.5; }
+      .flow { fill: none; stroke: #536272; stroke-width: 2.5; stroke-linejoin: round; marker-end: url(#arrow); }
+      .hold-flow { fill: none; stroke: #996633; stroke-width: 2; stroke-linejoin: round; marker-end: url(#hold-arrow); }
+    </style>
+  </defs>
+
+  <rect width="960" height="2100" rx="18" fill="#f9fafb"/>
+  <text x="36" y="55" font-size="34" font-weight="750">FieldMemory AI</text>
+  <text x="36" y="90" font-size="24" fill="#546474">문서 등록부터 답변과 원문 확인까지</text>
+  <rect x="36" y="109" width="24" height="16" rx="3" class="optional"/>
+  <text x="72" y="124" class="small">점선 박스: 선택 기능 · 기본 꺼짐 · 연결 확인과 설정 저장 후 사용</text>
+
+  <!-- Document preparation and query retrieval remain separate until the index is used. -->
+  <rect x="36" y="146" width="420" height="710" rx="16" class="panel"/>
+  <rect x="504" y="146" width="420" height="710" rx="16" class="panel"/>
+  <text x="60" y="187" class="heading">01 문서 준비</text>
+  <text x="528" y="187" class="heading">02 질문과 검색</text>
+
+  <rect x="60" y="210" width="372" height="86" rx="10" class="card"/>
+  <text x="80" y="246" class="title">문서 업로드</text>
+  <text x="80" y="275" class="note">MD · TXT · 텍스트 PDF · DOCX</text>
+  <path d="M246 296V324" class="flow"/>
+
+  <rect x="60" y="326" width="372" height="104" rx="10" class="card"/>
+  <text x="80" y="361" class="title">파일 검사 · 본문 추출</text>
+  <text x="80" y="391" class="note">형식 · 크기 · 읽을 수 있는 본문 확인</text>
+  <text x="80" y="415" class="small">추출 실패는 묶음 등록을 취소</text>
+  <path d="M246 430V448" class="flow"/>
+
+  <rect x="60" y="450" width="372" height="98" rx="10" class="card"/>
+  <text x="80" y="486" class="title">원본 · 본문 · 버전 보관</text>
+  <text x="80" y="516" class="note">로컬 파일 + SQLite 메타데이터</text>
+  <text x="80" y="539" class="small">본문 수정은 새 버전 초안으로</text>
+  <path d="M246 548V574" class="flow"/>
+
+  <rect x="60" y="576" width="372" height="110" rx="10" class="card"/>
+  <text x="80" y="612" class="title">검토자의 확인 · 승인</text>
+  <text x="80" y="643" class="note">자료 종류 · 적용 범위 · 효력 기간</text>
+  <text x="80" y="668" class="small">공식 지침과 경험의 권위는 구분</text>
+  <path d="M246 686V712" class="flow"/>
+
+  <rect x="60" y="714" width="372" height="98" rx="10" class="card"/>
+  <text x="80" y="750" class="title">문단 분할 · 로컬 E5 색인</text>
+  <text x="80" y="780" class="note">원문 위치 · 문서 버전 보존</text>
+  <text x="80" y="803" class="small">색인에 자료 개정 번호 연결</text>
+  <path d="M432 764H480V377H526" class="flow"/>
+  <rect x="462" y="549" width="36" height="69" rx="4" fill="#f9fafb"/>
+  <text x="480" y="574" text-anchor="middle" class="small">색</text>
+  <text x="480" y="600" text-anchor="middle" class="small">인</text>
+
+  <rect x="528" y="210" width="372" height="86" rx="10" class="card"/>
+  <text x="548" y="246" class="title">질문 입력</text>
+  <text x="548" y="275" class="note">자연어 질문 + 기준일 + 선택 설비</text>
+  <path d="M714 296V324" class="flow"/>
+
+  <rect x="528" y="326" width="372" height="104" rx="10" class="card"/>
+  <text x="548" y="361" class="title">조건 확인 · 의미 검색</text>
+  <text x="548" y="391" class="note">승인 · 효력 기간 · 설비 조건 반영</text>
+  <text x="548" y="415" class="small">로컬 E5 · 최대 20개 문단 후보</text>
+  <path d="M714 430V448" class="flow"/>
+
+  <rect x="528" y="450" width="372" height="98" rx="10" class="optional"/>
+  <text x="548" y="486" class="title">선택: 질문 요건 추출</text>
+  <text x="548" y="516" class="note">답에 필요한 조건과 정보 정리</text>
+  <text x="548" y="539" class="small">충분성 확인과 함께 사용</text>
+  <path d="M714 548V574" class="flow"/>
+
+  <rect x="528" y="576" width="372" height="92" rx="10" class="optional"/>
+  <text x="548" y="612" class="title">선택: Jev 후보 재정렬</text>
+  <text x="548" y="644" class="note">같은 후보의 관련성을 다시 판단</text>
+  <path d="M714 668V694" class="flow"/>
+
+  <rect x="528" y="696" width="372" height="116" rx="10" class="card"/>
+  <text x="548" y="733" class="title">최대 5개 근거 선택</text>
+  <text x="548" y="765" class="note">조건 부족 · 문서 충돌은 안내</text>
+  <text x="548" y="793" class="small">모델·색인 미준비는 준비 안내</text>
+
+  <!-- Optional stages are bypassed when off; all displayed evidence must pass freshness checks. -->
+  <rect x="36" y="886" width="888" height="844" rx="16" class="panel"/>
+  <text x="60" y="928" class="heading">03 답변과 원문 확인</text>
+  <text x="548" y="928" class="small">LLM: 확인·저장한 연결만 사용</text>
+  <path d="M714 812V872H480V946H328V964" class="flow"/>
+
+  <rect x="60" y="966" width="536" height="94" rx="10" class="optional"/>
+  <text x="80" y="1003" class="title">선택: 근거 충분성 확인</text>
+  <text x="80" y="1036" class="note">추출한 질문 요건과 선택한 근거를 대조</text>
+  <path d="M328 1060V1088" class="flow"/>
+  <text x="342" y="1081" class="small">충분함 / 기능 꺼짐</text>
+
+  <rect x="644" y="966" width="256" height="94" rx="10" class="hold"/>
+  <text x="662" y="1000" font-size="22" font-weight="650">조건·근거 부족</text>
+  <text x="662" y="1032" class="small">보완 안내 · 생성 보류</text>
+  <path d="M596 1013H642" class="hold-flow"/>
+  <path d="M772 1060V1088" class="hold-flow"/>
+
+  <rect x="60" y="1090" width="536" height="94" rx="10" class="card"/>
+  <text x="80" y="1127" class="title">근거를 바탕으로 답변 생성</text>
+  <text x="80" y="1159" class="note">Gemini · OpenRouter · 내부 호환 LLM</text>
+  <path d="M328 1184V1212" class="flow"/>
+
+  <rect x="60" y="1214" width="536" height="116" rx="10" class="card"/>
+  <text x="80" y="1251" class="title">인용과 주장 검사</text>
+  <text x="80" y="1283" class="note">문서 ID · 버전 · 해시 · 줄 · 원문 대조</text>
+  <text x="80" y="1310" class="note">자료 권위 · 숫자 · 단위 확인</text>
+  <path d="M328 1330V1358" class="flow"/>
+
+  <rect x="60" y="1360" width="536" height="94" rx="10" class="optional"/>
+  <text x="80" y="1397" class="title">선택: Jev 주장 검증</text>
+  <text x="80" y="1429" class="note">주장과 인용 근거가 뒷받침되는지 대조</text>
+  <path d="M328 1454V1482" class="flow"/>
+
+  <rect x="644" y="1090" width="256" height="250" rx="10" class="hold"/>
+  <text x="662" y="1127" font-size="22" font-weight="650">원문 근거만 표시</text>
+  <text x="662" y="1166" class="small">LLM 미사용·연결 오류</text>
+  <text x="662" y="1196" class="small">충분성 판단 실패</text>
+  <text x="662" y="1226" class="small">인용·주장 검증 실패</text>
+  <line x1="662" y1="1250" x2="882" y2="1250" stroke="#d3b58c"/>
+  <text x="662" y="1283" class="small">내부 연결이 실패해도</text>
+  <text x="662" y="1313" class="small">외부로 자동 전환 없음</text>
+  <path d="M900 754H942V1213H902" class="flow"/>
+  <rect x="930" y="858" width="24" height="151" rx="4" fill="#f9fafb"/>
+  <text x="947" y="986" transform="rotate(-90 947 986)" font-size="18" fill="#546474">LLM 미사용</text>
+  <path d="M596 1137H642" class="hold-flow"/>
+  <path d="M596 1272H642" class="hold-flow"/>
+  <path d="M596 1407H620V1312H642" class="hold-flow"/>
+  <path d="M772 1340V1469H342V1482" class="flow"/>
+
+  <rect x="60" y="1484" width="536" height="90" rx="10" class="card"/>
+  <text x="80" y="1520" class="title">표시 전 자료 변경 여부 확인</text>
+  <text x="80" y="1550" class="note">자료 개정 번호 + 현재 원문·인용 상태</text>
+  <path d="M328 1574V1602" class="flow"/>
+  <rect x="644" y="1484" width="256" height="90" rx="10" class="hold"/>
+  <text x="662" y="1518" font-size="22" font-weight="650">자료 변경 감지</text>
+  <text x="662" y="1550" class="small">결과 폐기 · 다시 검색</text>
+  <path d="M596 1529H642" class="hold-flow"/>
+
+  <rect x="60" y="1604" width="536" height="104" rx="10" fill="#243343"/>
+  <text x="80" y="1643" class="title" style="fill: #fff">답변 또는 원문 근거 표시</text>
+  <text x="80" y="1677" class="note" style="fill: #dbe5ef">답변의 인용에서 정확한 원문으로 이동</text>
+  <rect x="644" y="1604" width="256" height="104" rx="10" class="card"/>
+  <text x="662" y="1638" class="small">원문을 펼칠 때</text>
+  <text x="662" y="1665" class="small">모델을 다시 호출하지 않음</text>
+  <text x="662" y="1692" class="small">AI 답변 자동 저장 없음</text>
+
+  <rect x="36" y="1754" width="888" height="108" rx="12" fill="#e7edf3"/>
+  <text x="60" y="1790" font-size="23" font-weight="700">문서 수정·승인·철회·삭제 → 자료 개정 번호 갱신</text>
+  <text x="60" y="1822" class="note">색인과 기존 답변에 변경 반영 · 질문 유지 · 사용자 재검색 전 자동 호출 없음</text>
+  <text x="60" y="1848" class="small">승인된 경험도 공식 지침으로 승격하지 않습니다.</text>
+
+  <!-- Evaluation is not a stage of normal user requests and never feeds gold answers into retrieval. -->
+  <rect x="36" y="1886" width="888" height="168" rx="16" fill="#fff" stroke="#bac8d5" stroke-width="1.5"/>
+  <text x="60" y="1926" class="heading">04 평가는 사용자 검색과 분리</text>
+  <text x="60" y="1960" class="note">별도 합성 개발·최종 평가 세트 → 같은 조건의 비교 실행 → 독립 판정</text>
+  <text x="60" y="1990" class="note">후보·답변·모델·설정·호출 기록 보존 · 평가 정답은 색인·모델 입력에서 제외</text>
+  <text x="60" y="2024" class="small">실제 LLM 답변 정확도와 Jev 개선률은 아직 미측정입니다.</text>
+  <text x="36" y="2083" font-size="18" fill="#546474">2026-10-08 정리 · 로컬 최신 구현 기준 · 일부 작업은 기본 브랜치 통합 전</text>
+</svg>
